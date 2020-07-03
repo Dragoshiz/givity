@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"python.pythonPath": "/home/dragos/.virtualenvs/givity/bin/python",
+		"python.terminal.activateEnvironment": true
+	},
+	"files.associations": {}
+}

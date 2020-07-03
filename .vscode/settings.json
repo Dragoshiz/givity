@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/home/dragos/.virtualenvs/givity/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
+}
