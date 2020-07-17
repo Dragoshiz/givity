@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  <div id="carousel-area">
+    <div id="carousel-slider" class="carousel slide" data-interval="false">
+      <ol class="carousel-indicators">
+        {% for p in photos %}
+        <li data-target="#carousel-slider" data-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+        {% endfor %}
+      </ol>
+    <div class="carousel-inner" role="listbox">
+      {% for p in photos%}
+      <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+        <img class="d-block w-100" src="{{ p.image.url}}" alt="First slide">
+      </div>
+      {% endfor %}
+    </div>
+      <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+        <i class="lnr  lnr-arrow-left"><h1><</h1></i>
+      </a>
+      <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+        <i class="lnr  lnr-arrow-right"><h1>></h1></i>
+      </a>
+        </div>
+  </div>
+</div> 
+{% endblock %}
