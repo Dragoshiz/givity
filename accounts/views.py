@@ -15,10 +15,9 @@ def register(request):
             messages.success(request, 'Congratulations, Anyad')
             return redirect('blog')
         else:
-            import ipdb; ipdb.set_trace()
-            for msg in form.error_messages:
-                messages.error(request, f"{msg}: {form.error_messages[msg]}")
-            messages.error(request, "Something went wrong")
+            for _, messages_list in form.errors.items():
+                for msg in messages_list:
+                    messages.error(request, msg)
             return redirect('register')
     else:
         form = RegisterForm()

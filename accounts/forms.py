@@ -8,10 +8,3 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = ContactPerson
         fields = ['first_name', 'last_name', 'email', 'phone', 'title']
-
-    def clean(self):
-        cleaned_data = super(RegisterForm, self).clean()
-        email_exists = User.objects.filter(email=cleaned_data['email']).exists()
-        if email_exists:
-            raise forms.ValidationError("Email already exists, anyad!")
-        return cleaned_data
