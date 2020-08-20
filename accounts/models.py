@@ -19,6 +19,7 @@ class UserManager(BaseUserManager):
         return user
     
     def create_superuser(self, email, first_name, last_name, password):
+        import ipdb; ipdb.set_trace()
         user = self.create_user(
             email,
             password=password,
@@ -39,7 +40,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField('first name', max_length=100, blank=True)
     last_name = models.CharField('last name', max_length=100, blank=True)
 
-    is_active = models.BooleanField('active', default=True, help_text='Designates whether this user should be treated as active.''Unselect this instead of deleting accounts.')
+    is_active = models.BooleanField('active', default=False, help_text='Designates whether this user should be treated as active.''Unselect this instead of deleting accounts.')
     is_staff = models.BooleanField('staff status', default=False, help_text='Designates whether the user can log into this admin site.')
     date_joined = models.DateTimeField('date joined', default=timezone.now)
     objects = UserManager()

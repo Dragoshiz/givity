@@ -121,6 +121,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/')
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR, 'static'),
+)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = (
     os.path.join(BASE_DIR, 'media')
@@ -130,9 +134,14 @@ LOGIN_REDIRECT_URL = 'blog'
 # LOGOUT_REDIRECT_URL = '/accounts/logout'
 
 # SMTP Configuration
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'dragosimbrea@gmail.com'
-EMAIL_HOST_PASSWORD = 'Dodo.250895'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.RemoteUserBackend',
+        'django.contrib.auth.backends.ModelBackend',
+)
